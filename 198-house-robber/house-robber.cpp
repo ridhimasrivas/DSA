@@ -1,21 +1,16 @@
 class Solution {
 public:
-    int solve(int i, vector<int>& nums,vector<int>&memo) {
-        if (i == 0)
-            return nums[0];
-        if (i < 0)
-            return 0;
-        if(memo[i]!=-1)
-        return memo[i];
-        int handle = nums[i] + solve(i - 2, nums,memo);
-        int not_handle = +solve(i - 1, nums,memo);
-        return memo[i]=max(handle, not_handle);
-    }
-
-public:
     int rob(vector<int>& nums) {
-        int n = nums.size();
-        vector<int>memo(n+1,-1);
-        return  solve(n - 1, nums,memo);
+        int n=nums.size();
+        vector<int>dp(n,0);
+        if(n==1)
+        return nums[0];
+        dp[0]=nums[0];
+        dp[1]=max(nums[0],nums[1]);
+        for(int i=2;i<nums.size();i++)
+        {
+            dp[i]=max(nums[i]+dp[i-2],dp[i-1]);
+        }
+        return dp[n-1];
     }
 };
