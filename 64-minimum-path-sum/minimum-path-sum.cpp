@@ -1,7 +1,6 @@
 class Solution {
 public:
-    int pathsum(int i, int j, vector<vector<int>>& grid,
-                vector<vector<int>>& dp) {
+    int pathsum(int i, int j, vector<vector<int>>& grid,vector<vector<int>>& dp) {
         if (i == 0 && j == 0)
             return grid[0][0];
         if (i < 0 || j < 0)
